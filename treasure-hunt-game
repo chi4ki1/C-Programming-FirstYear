@@ -1,0 +1,171 @@
+#include <stdio.h>
+#include <unistd.h>
+
+int main(void) {
+    printf("◤━━━━━━━━━━━━━━━━━━━━◥\n");
+    printf("                                  \n");
+    printf("       TREASURE HUNT GAME 🕵‍      \n");
+    printf("                                   \n");
+    printf("◤━━━━━━━━━━━━━━━━━━━━◥\n");
+    sleep(1);
+    printf("\n");
+    printf("You are at a crossroads. \n");
+    sleep(1);
+
+    int availableAttempts = 5;
+    int correctAttempts = 0;
+    int chosenPath = 0;
+
+    for (int i = 0; i < 7; i++) {
+        printf("\nChoose a path (1-North, 2-South, 3-East, 4-West): \n");
+
+        while (1) {
+            scanf("%d", &chosenPath);
+            if (chosenPath >= 1 && chosenPath <= 4) {
+                break;  // Exit the loop if a valid input is provided
+            } else {
+                printf("Invalid choice. Please choose a valid path (1-4):\n");
+            }
+        }
+
+        switch (chosenPath) {
+        case 1: {
+            int northAttempt;
+            printf("What is (15 * 2) / 3? \n");
+            scanf("%d", &northAttempt);
+
+            if (northAttempt == 10) {
+                correctAttempts++;
+                printf("You are correct! \n");
+                sleep(1);
+                printf("\nCorrect Answers: %d, Remaining Attempts: %d", correctAttempts, availableAttempts);
+            } else {
+                availableAttempts--;
+                printf("You are incorrect! \n");
+                sleep(1);
+                printf("\nCorrect Answers: %d, Remaining Attempts: %d", correctAttempts, availableAttempts);
+            }
+            break;
+        }
+
+        case 2: {
+            int southAttempt;
+            printf("What is the square of 8 minus 14? \n");
+            scanf("%d", &southAttempt);
+
+            if (southAttempt == 50) {
+                correctAttempts++;
+                printf("You are correct! \n");
+                sleep(1);
+                printf("\nCorrect Answers: %d, Remaining Attempts: %d \n", correctAttempts, availableAttempts);
+            } else {
+                availableAttempts--;
+                printf("You are incorrect! \n");
+                sleep(1);
+                printf("\nCorrect Answers: %d, Remaining Attempts: %d \n", correctAttempts, availableAttempts);
+            }
+            break;
+        }
+
+        case 3: {
+            int eastAttempt;
+            printf("If 5x - 3 = 17, what is x? \n");
+            scanf("%d", &eastAttempt);
+
+            if (eastAttempt == 4) {
+                correctAttempts++;
+                printf("You are correct! \n");
+                sleep(1);
+                printf("\nCorrect Answers: %d, Remaining Attempts: %d \n", correctAttempts, availableAttempts);
+            } else {
+                availableAttempts--;
+                printf("You are incorrect! \n");
+                sleep(1);
+                printf("\nCorrect Answers: %d, Remaining Attempts: %d \n", correctAttempts, availableAttempts);
+            }
+            break;
+        }
+
+        case 4: {
+            int westAttempt;
+            printf("What is the remainder when 28 is divided by 6?. \n");
+            scanf("%d", &westAttempt);
+
+            if (westAttempt == 28 % 6) {
+                correctAttempts++;
+                printf("You are correct! \n");
+                sleep(1);
+                printf("\nCorrect Answers: %d, Remaining Attempts: %d \n", correctAttempts, availableAttempts);
+            } else {
+                availableAttempts--;
+                printf("You are incorrect! \n");
+                sleep(1);
+                printf("\nCorrect Answers: %d, Remaining Attempts: %d \n", correctAttempts, availableAttempts);
+            }
+            break;
+        }
+
+        default:
+            break;
+        }
+
+        if (availableAttempts == 0) {
+            printf("\nOh no! ( •᷄⌓•᷅ ) You ran out of attempts!\n");
+            sleep(1);
+            printf("------------------------------ \n");
+            printf("         ❌Game Over! ❌       \n");
+            printf("------------------------------ \n");
+            break;
+        }
+
+        if (correctAttempts == 4 && availableAttempts >= 1) {
+            printf("Look!👀 \n");
+            sleep(2);
+            printf("\nYou stumbled upon an island!🏝️ \n");
+            sleep(1);
+            printf("\nYou see a strange-looking old fisherman.👨🎣 \n");
+            sleep(1);
+            printf("\nThe fisherman will lend you a boat. \nONLY IF you answered the riddle correctly!\n");
+            sleep(1);
+
+            int riddleAnswer;
+            printf("\nThe fisherman asks you a riddle: Ram has 7 sons. Each of his sons has a sister. If so, how many children does Mr.Ram have? \n");
+            scanf("%d", &riddleAnswer);
+
+            if (riddleAnswer == 8) {
+                correctAttempts++;
+                printf("CONGRATULATIONS! YOU GOT THE CORRECT ANSWER!✔️ \n");
+                sleep(1);
+                printf("You can now sail to the island...⛵\n");
+            } else {
+                availableAttempts--;
+                printf("You answer is incorrect ❌! \n");
+                sleep(1);
+                printf("You don't have a boat now... \n");
+                sleep(1);
+                printf("You ended up swimming your way to the island🏊 \n");
+                printf(". \n");
+                sleep(1);
+                printf(".. \n");
+                sleep(1);
+                printf("... \n");
+                sleep(1);
+                printf("You drowned in the middle of the sea...💀\n");
+                sleep(1);
+                printf("------------------------------ \n");
+                printf("         ❌Game Over! ❌       \n");
+                printf("------------------------------ \n");
+                return 0;
+            }
+        }
+
+        if (correctAttempts == 5) {
+            printf("\nCONGRATULATIONS!🎉 \n");
+            sleep(1);
+            printf("You found the Treasure! 🎁 \n");
+            break;
+        }
+    }
+
+    return 0;
+}
