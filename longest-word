@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+int main() {
+    
+    char longestWord[100];
+    int numberOfWords = 0;
+    int longestLength = 0;
+    // prompt and the store the value of the user to input the number of words that will be entered.
+    printf("Enter the number of words: \n");
+    scanf("%d", &numberOfWords);
+
+    printf("Enter the text: \n");
+
+    scanf("%s", &longestWord); // store the inputted text to longestWord
+    longestLength = strlen(longestWord); // replace the value of longestLength using the length of the longestWord.
+    
+    // create a loop that compare every word
+    for (int wordCount = 1; wordCount < numberOfWords; wordCount++) {
+        // create an array to store the current word to be checked.
+        char currentWord[100];
+        scanf("%s", currentWord);
+        
+        // Compare the length of the current word with the longest word
+        int currentLength = 0;
+        while (currentWord[currentLength] != '\0') {
+            currentLength++;
+        }
+
+        if (currentLength > longestLength) {
+            longestLength = currentLength;
+
+        // Copy the current word to the longestWord array
+            int i = 0;
+            while (currentWord[i] != '\0') {
+                longestWord[i] = currentWord[i];
+                i++;
+            }
+            longestWord[i] = '\0'; 
+        }
+    }
+
+    printf("The length of the longest word is: %d\n", longestLength);
+
+    return 0;
+}

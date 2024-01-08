@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int main() {
+    
+    char studentName[50];
+    int studentName_Length = 0;
+    
+    printf("Enter the name: \n");
+    fgets(studentName, sizeof(studentName), stdin); // store the inputted name into the array
+    
+    // create a while loop that checks that every null terminator and new line should not be counted 
+    // when storing and counting every character in the inputted name
+    while (studentName[studentName_Length] != '\0' && studentName[studentName_Length] != '\n') {
+        if (studentName[studentName_Length] ==' '){ //if the inputted name has a space, an error message will pop-up and it will exit the program
+            printf("Your name shouldn't contain any spaces!\n");
+            break;
+        } else {
+        studentName_Length ++;
+        }
+    }
+    //  if the while loop has been satisfied, it will proceed to the conditional statement to check if the length of the name is either
+    // odd (will display '2') or even (will display '1'). if the inputted number blank it will then ofcourse store it as 0 and will display
+    // an error message implying to input a name
+    if (studentName_Length ==0){
+        printf("Please input a name!");
+        } else if (studentName_Length%2==1){
+            printf("2\n");
+        } else if (studentName_Length%2==0 && studentName_Length!=0){
+            printf("1\n");
+        }
+        return 0;
+  }
